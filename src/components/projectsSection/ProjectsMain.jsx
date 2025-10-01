@@ -2,32 +2,55 @@ import ProjectsText from "./ProjectsText";
 import SingleProject from "./SingleProject";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../framerMotion/variants";
-import image1 from "../../assets/MatrimonyBD.jpg"
-import image2 from "../../assets/Whereislt.jpg"
-import image3 from "../../assets/GadgetHeaven.jpg"
+import blinkItImage from "../../assets/blinkIt.jpg"
+import generateInvoice from "../../assets/generateInvoice.jpg"
+import matrimonyImage from "../../assets/MatrimonyBD.jpg"
+import whereIsItImage from "../../assets/Whereislt.jpg"
+import gadgetHavenImage from "../../assets/GadgetHeaven.jpg"
 const projects = [
+  {
+    name: "BlinkIt",
+    year: "AUG2025",
+    align: "right",
+    image: blinkItImage,
+    frontend: "https://github.com/lukmanxpert/blinkit-client",
+    backend: "https://github.com/lukmanxpert/blinkit-server",
+    liveLink: "https://blinkit-client-drab.vercel.app/",
+  },
+  {
+    name: "Generate Invoice",
+    year: "JULY2025",
+    align: "left",
+    image: generateInvoice,
+    frontend: "https://github.com/lukmanxpert/generate-invoice",
+    backend: "",
+    liveLink: "https://generate-invoice-five.vercel.app/",
+  },
   {
     name: "Matrimony BD",
     year: "DEC2024",
     align: "right",
-    image: image1,
-    githubLink: "https://github.com/lukmanxpert/matrimonybd-client",
+    image: matrimonyImage,
+    frontend: "https://github.com/lukmanxpert/matrimonybd-client",
+    backend: "https://github.com/lukmanxpert/matrimonybd-server",
     liveLink: "https://matrimonybd-be814.web.app/home",
   },
   {
     name: "Whereislt",
     year: "NOV2024",
     align: "left",
-    image: image2,
-    githubLink: "https://github.com/lukmanxpert/WhereIslt-client-side",
+    image: whereIsItImage,
+    frontend: "https://github.com/lukmanxpert/WhereIslt-client-side",
+    backend: "https://github.com/lukmanxpert/WhereIslt-server-side",
     liveLink: "https://whereislt.netlify.app/home"
   },
   {
     name: "Gadget Heaven",
     year: "OCT2024",
     align: "right",
-    image: image3,
-    githubLink: "https://github.com/lukmanxpert/gadget-heaven",
+    image: gadgetHavenImage,
+    frontend: "https://github.com/lukmanxpert/gadget-heaven",
+    backend: "",
     liveLink: "https://gadget-heaven01.netlify.app/"
   }
 ];
@@ -52,8 +75,9 @@ const ProjectsMain = () => {
               year={project.year}
               align={project.align}
               image={project.image}
-              code={project.githubLink}
+              frontend={project.frontend}
               live={project.liveLink}
+              backend={project.backend}
             />
           );
         })}
