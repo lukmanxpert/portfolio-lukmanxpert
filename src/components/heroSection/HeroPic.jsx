@@ -9,7 +9,7 @@ const HeroPic = () => {
       initial="hidden"
       whileInView="show"
       viewport={{ once: false, amount: 0 }}
-      className="relative flex items-center justify-center group"
+      className="relative flex items-center justify-center group mt-10"
     >
       {/* Animated Gradient Glow Behind */}
       <div className="absolute w-[280px] h-[280px] md:w-[360px] md:h-[360px] rounded-full bg-gradient-to-tr from-cyan-400 to-orange-400 blur-3xl opacity-50 group-hover:opacity-80 group-hover:scale-110 transition-all duration-500"></div>

@@ -1,6 +1,6 @@
 const NavbarBtn = () => {
   return (
-    <button className="px-4 hidden md:flex py-2 rounded-full text-xl font-bold font-body text-white border-cyan border items-center gap-1 bg-gradient-to-r  from-darkCyan to-orange transition-all duration-500 hover:scale-110 hover:border-orange cursor-pointer hover:shadow-cyanShadow">
+    <button className="hidden md:flex rounded-full text-xl font-bold font-body text-white border-cyan border items-center gap-1 bg-gradient-to-r  from-darkCyan to-orange transition-all duration-500 hover:scale-110 hover:border-orange cursor-pointer hover:shadow-cyanShadow">
       {/* <Link to="./resume.pdf" download={"Sheikh_Lukman_CV.pdf"} spy={true} smooth={true} duration={500} offset={-120}>
         Download Resume
       </Link> */}
