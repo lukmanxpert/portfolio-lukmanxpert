@@ -1,61 +1,55 @@
-import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
+import { useState } from "react";
 
 const ContactForm = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [success, setSuccess] = useState("");
-  const handleName = (e) => {
-    setName(e.target.value);
-  };
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  };
-  const handleMessage = (e) => {
-    setMessage(e.target.value);
-  };
-  const form = useRef();
-  const sendEmail = (e) => {
-    e.preventDefault();
-    emailjs
-      .sendForm("service_ko3hmpt", "template_ahbmmqd", form.current, {
-        publicKey: "I6HAT5mUZH7WHabGE",
-      })
-      .then(
-        () => {
-          setEmail("");
-          setName("");
-          setMessage("");
-          setSuccess("Message Sent Succesfully");
-        },
-        (error) => {
-          console.log("FAILED...", error.text);
-        }
-      );
-  };
+  const [result, setResult] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
+
+  const sendEmail = async (event) => {
+    event.preventDefault()
+    try {
+      setResult("Sending...")
+      setIsLoading(true)
+      const formData = new FormData(event.target);
+      formData.append("access_key", "f8944466-2d14-435f-ba45-10f4e037e45a");
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setResult("Form Submitted Successfully");
+        event.target.reset();
+      } else {
+        console.log("Error", data);
+        setResult(data.message);
+      }
+    } catch (error) {
+      setResult("Something went wrong.")
+      console.log('error :>> ', error);
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   return (
     <div>
-      <p className="text-cyan">{success}</p>
-      <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-4">
+      <p className="text-cyan">{result}</p>
+      <form onSubmit={sendEmail} className="flex flex-col gap-4">
         <input
           type="text"
-          name="from_name"
+          name="name"
           placeholder="Your Name"
           required
           className="h-12 rounded-lg bg-lightBrown px-2"
-          value={name}
-          onChange={handleName}
         />
         <input
           type="email"
-          name="from_email"
+          name="email"
           placeholder="Your Email"
           required
           className="h-12 rounded-lg bg-lightBrown px-2"
-          value={email}
-          onChange={handleEmail}
         />
         <textarea
           type="text"
@@ -65,14 +59,12 @@ const ContactForm = () => {
           placeholder="Message"
           required
           className=" rounded-lg bg-lightBrown p-2"
-          value={message}
-          onChange={handleMessage}
         />
         <button
           type="submit"
           className="w-full rounded-lg border border-cyan text-white h-12 font-bold text-xl hover:bg-darkCyan bg-cyan transition-all duration-500"
         >
-          Send
+          {isLoading ? "Sending..." : "Send"}
         </button>
       </form>
     </div>
