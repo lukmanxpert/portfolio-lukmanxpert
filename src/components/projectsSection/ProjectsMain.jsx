@@ -2,12 +2,32 @@ import ProjectsText from "./ProjectsText";
 import SingleProject from "./SingleProject";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../framerMotion/variants";
+import shopmateStore from "../../assets/ShopmateStore.jpg"
+import shopmateDashboard from "../../assets/ShopmateDashboard.jpg"
 import blinkItImage from "../../assets/blinkIt.jpg"
 import generateInvoice from "../../assets/generateInvoice.jpg"
 import matrimonyImage from "../../assets/MatrimonyBD.jpg"
 import whereIsItImage from "../../assets/Whereislt.jpg"
 import gadgetHavenImage from "../../assets/GadgetHeaven.jpg"
 const projects = [
+  {
+    name: "Shopmate AI Store",
+    year: "JAN2026",
+    align: "right",
+    image: shopmateStore,
+    frontend: "https://github.com/lukmanxpert/shopmate-ai-powered-ecommerce-store-frontend",
+    backend: "https://github.com/lukmanxpert/shopmate-ai-powered-ecommerce-store-backend",
+    liveLink: "https://shopmate-ai-shop.netlify.app/",
+  },
+  {
+    name: "Shopmate Dashboard",
+    year: "JAN2026",
+    align: "left",
+    image: shopmateDashboard,
+    frontend: "https://github.com/lukmanxpert/shopmate-ai-powered-ecommerce-store-dashboard",
+    backend: "https://github.com/lukmanxpert/shopmate-ai-powered-ecommerce-store-backend",
+    liveLink: "https://shopmate-ai-dashboard.netlify.app/",
+  },
   {
     name: "BlinkIt",
     year: "AUG2025",
